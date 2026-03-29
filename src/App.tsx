@@ -4,6 +4,8 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
+import RubikCube from "./components/Rubiks_cube.jsx";
+import { OrbitControls } from "@react-three/drei";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,14 +34,14 @@ function App() {
 
       <div className="ticks"></div>
 
-      <div id="canvas-container">
-        <Canvas>
-          <ambientLight intensity={0.1} />
-          <directionalLight color="yellow" position={[0, 0, 5]} />
-          <mesh>
-            <boxGeometry args={[2, 2, 2]} />
-            <meshStandardMaterial />
-          </mesh>
+      <div id="canvas-container" className="hero">
+        <Canvas camera={{ position: [10, 10, 10], fov: 50 }}>
+          <ambientLight intensity={0.6} />
+          <directionalLight position={[5, 5, 5]} />
+
+          <RubikCube scale={0.05} />
+
+          <OrbitControls  />
         </Canvas>
       </div>
 
